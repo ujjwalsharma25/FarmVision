@@ -239,6 +239,3 @@ FarmVision/
 
 
 
-## 🛡️ License
-
-MIT
