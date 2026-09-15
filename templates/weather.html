@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🌦️ Local Weather</h2>
+    <p class="ak-page-subtitle">Check current weather by city, or use your real location.</p>
+  </div>
+</div>
+
+<div class="container" style="max-width:520px;">
+  <div class="ak-card">
+    <form method="GET" style="display:flex; gap:0.6rem; margin-bottom:0.75rem;">
+      <input type="text" name="city" class="form-control" placeholder="Enter city name..." value="{{ city or '' }}">
+      <button type="submit" class="ak-btn ak-btn-primary">Search</button>
+    </form>
+
+    <button type="button" id="use-location-btn" class="ak-btn ak-btn-block" style="background:#eafaf0; color:var(--ak-green-dark); border:1px solid #cdeedb;">📍 Use My Location</button>
+
+    {% if error %}
+    <div class="ak-alert ak-alert-error" style="margin-top:1rem;">{{ error }}</div>
+    {% endif %}
+
+    {% if weather %}
+    <div style="text-align:center; margin-top:1.5rem;">
+      <h3 style="color:var(--ak-green-dark);">{{ city }}</h3>
+      <div style="font-size:3rem; font-weight:700; color:var(--ak-text);">{{ weather.temperature }}°C</div>
+      <p style="color:var(--ak-muted);">Humidity: {{ weather.humidity }}%</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  document.getElementById('use-location-btn').addEventListener('click', function () {
+    if (!navigator.geolocation) { alert('Geolocation not supported by your browser.'); return; }
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        window.location.href = `/weather?lat=${lat}&lon=${lon}`;
+      },
+      function () { alert('Location access denied. Please search by city name instead.'); }
+    );
+  });
+</script>
+
+{% endblock %}

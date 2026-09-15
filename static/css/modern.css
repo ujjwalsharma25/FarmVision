@@ -1,0 +1,232 @@
+/* FarmVision — modern visual layer (loaded after the legacy bootstrap CSS) */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ak-green: #1a7f37;
+  --ak-green-dark: #14602a;
+  --ak-blue: #4285F4;
+  --ak-red: #EA4335;
+  --ak-yellow: #FBBC05;
+  --ak-bg: #f6f8f6;
+  --ak-card: #ffffff;
+  --ak-text: #1f2937;
+  --ak-muted: #6b7280;
+  --ak-radius: 16px;
+  --ak-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--ak-bg) !important;
+  color: var(--ak-text);
+}
+
+h1, h2, h3, h4, .navbar-brand {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+nav.navbar {
+  background: linear-gradient(90deg, #0f3d1e, var(--ak-green-dark)) !important;
+  box-shadow: var(--ak-shadow);
+}
+nav.navbar .nav-link {
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav.navbar .nav-link:hover {
+  color: var(--ak-yellow) !important;
+}
+
+/* ---------- Buttons ---------- */
+.ak-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  text-align: center;
+}
+.ak-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+.ak-btn-primary { background: var(--ak-green); color: #fff; }
+.ak-btn-primary:hover { color: #fff; }
+.ak-btn-block { display: block; width: 100%; }
+
+/* ---------- Cards / containers ---------- */
+.ak-card {
+  background: var(--ak-card);
+  border-radius: var(--ak-radius);
+  box-shadow: var(--ak-shadow);
+  padding: 2rem;
+  margin: 2rem auto;
+}
+.ak-card-narrow { max-width: 480px; }
+
+.ak-hero {
+  background: linear-gradient(135deg, #0f3d1e 0%, #1a7f37 55%, #2fa84f 100%);
+  color: #fff;
+  padding: 4.5rem 1rem;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  margin-bottom: 1rem;
+}
+.ak-hero h1 { font-weight: 700; font-size: 2.4rem; margin-bottom: 0.75rem; }
+.ak-hero p { font-size: 1.1rem; opacity: 0.92; max-width: 620px; margin: 0 auto 0.5rem; }
+.ak-hero .ak-hero-questions { max-width: 480px; margin: 1.5rem auto 0; text-align: left; font-size: 0.95rem; opacity: 0.95; }
+.ak-hero .ak-hero-questions li { margin-bottom: 0.35rem; }
+
+.ak-service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+.ak-service-card {
+  background: #fff;
+  border-radius: var(--ak-radius);
+  box-shadow: var(--ak-shadow);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ak-text);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+}
+.ak-service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); color: var(--ak-text); text-decoration: none; }
+.ak-service-card .ak-service-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.ak-service-card h4 { font-weight: 600; margin-bottom: 0.5rem; }
+.ak-service-card p { color: var(--ak-muted); font-size: 0.9rem; margin: 0; }
+
+/* ---------- Sidebar dashboard ---------- */
+.ak-dash-wrap { display: flex; min-height: calc(100vh - 80px); }
+.ak-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #0f3d1e, #14602a);
+  color: #fff;
+  padding: 1.75rem 1.25rem;
+}
+.ak-sidebar-brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 2rem; }
+.ak-sidebar-brand img { width: 38px; height: 38px; }
+.ak-sidebar-brand span { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.25rem; }
+.ak-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  color: #e5efe9;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  transition: background 0.15s;
+}
+.ak-sidebar-link:hover, .ak-sidebar-link.active {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  text-decoration: none;
+}
+.ak-sidebar-link .icon { font-size: 1.2rem; width: 1.5rem; text-align: center; }
+.ak-dash-main { flex: 1; padding: 2rem; background: var(--ak-bg); }
+.ak-dash-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem; }
+.ak-dash-topbar h2 { font-weight: 700; color: var(--ak-green-dark); margin: 0; }
+
+@media (max-width: 768px) {
+  .ak-dash-wrap { flex-direction: column; }
+  .ak-sidebar { width: 100%; padding: 1rem 1.25rem; }
+}
+
+.ak-hero-mini {
+  background: linear-gradient(135deg, #eafaf0, #f6f8f6);
+  padding: 2.5rem 1rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+.ak-page-title { font-weight: 700; color: var(--ak-green-dark); margin-bottom: 0.5rem; }
+.ak-page-subtitle { color: var(--ak-muted); max-width: 560px; margin: 0 auto; }
+
+/* ---------- Upload box ---------- */
+.ak-upload-box {
+  display: block;
+  border: 2px dashed #b7d9c4;
+  border-radius: var(--ak-radius);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: #fafffb;
+}
+.ak-upload-box:hover { border-color: var(--ak-green); background: #f0fbf3; }
+.ak-upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.ak-upload-hint { color: var(--ak-muted); font-size: 0.85rem; }
+.ak-preview-img { max-width: 100%; max-height: 260px; border-radius: 12px; margin: 0 auto; display: block; }
+
+.ak-location-status {
+  font-size: 0.85rem;
+  color: var(--ak-muted);
+  text-align: center;
+  margin: 0.9rem 0;
+}
+.ak-location-ok { color: var(--ak-green); font-weight: 500; }
+
+.ak-alert {
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.ak-alert-error { background: #fdecea; color: #b3261e; border: 1px solid #f5c2c0; }
+
+/* ---------- Chatbot ---------- */
+.ak-chat-window {
+  height: 60vh;
+  min-height: 360px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #fafffb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+.ak-chat-bubble {
+  max-width: 78%;
+  padding: 0.7rem 1rem;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+.ak-chat-bubble.user {
+  background: var(--ak-green);
+  color: #fff;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+.ak-chat-bubble.bot {
+  background: #eef2ef;
+  color: var(--ak-text);
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+.ak-chat-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.ak-chat-input-row input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+}
+.ak-chat-input-row input:focus { outline: 2px solid var(--ak-green); border-color: transparent; }
+.ak-lang-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 0.75rem 0 0.25rem; }
+.ak-lang-badge {
+  font-size: 0.75rem;
+  background: #eafaf0;
+  color: var(--ak-green-dark);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #cdeedb;
+}

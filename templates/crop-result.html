@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🌱 Prediction Result</h2>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-card ak-card-narrow" style="text-align:center;">
+    <h4 style="color:var(--ak-muted); font-weight:500;">Predicted Disease</h4>
+    <h2 style="color:var(--ak-green-dark); font-weight:700;">{{ prediction.label }}</h2>
+    <p style="color:var(--ak-muted);">Confidence score: {{ prediction.score | round(2) }}</p>
+
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="Uploaded Image" class="ak-preview-img" style="margin-top:1rem;" />
+
+    <a href="{{ url_for('index') }}" class="ak-btn ak-btn-primary" style="margin-top:1.5rem;">Back to Home</a>
+  </div>
+</div>
+
+{% endblock %}

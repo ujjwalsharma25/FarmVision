@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🌱 Find the Best Crop for Your Soil</h2>
+    <p class="ak-page-subtitle">Upload a photo of your soil and we'll recommend the most suitable crop to grow.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-card ak-card-narrow">
+    <form method="POST" action="{{ url_for('soil_prediction') }}" enctype="multipart/form-data">
+      <label class="ak-upload-box" for="soil_image">
+        <div class="ak-upload-icon">🖼️</div>
+        <p><strong>Click to upload</strong> a soil photo</p>
+        <span class="ak-upload-hint">PNG, JPG or JPEG</span>
+      </label>
+      <input type="file" class="d-none" id="soil_image" name="soil_image" required />
+      <button type="submit" class="ak-btn ak-btn-primary ak-btn-block" style="margin-top:1.25rem;">Predict Best Crop</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🍃 Diagnosis Result</h2>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-card ak-card-narrow" style="text-align:center;">
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="Uploaded Plant Image" class="ak-preview-img" />
+
+    <h4 style="color:var(--ak-muted); font-weight:500; margin-top:1.25rem;">Disease Detected</h4>
+    <h2 style="color:var(--ak-green-dark); font-weight:700;">{{ prediction['label'] }}</h2>
+    <p style="color:var(--ak-muted);">Confidence: {{ (prediction['score'] * 100) | round(2) }}%</p>
+
+    <hr>
+
+    <h4 style="color:var(--ak-green-dark); font-weight:600;">Fertilizer Recommendation</h4>
+    <p style="text-align:left;"><strong>Fertilizer:</strong> {{ fertilizer['fertilizer'] }}</p>
+    <p style="text-align:left;"><strong>Details:</strong> {{ fertilizer['details'] }}</p>
+    <p style="text-align:left;"><strong>Application Method:</strong> {{ fertilizer['application_method'] }}</p>
+
+    <a href="/disease-predict" class="ak-btn ak-btn-primary" style="margin-top:1rem;">Analyze Another Image</a>
+  </div>
+</div>
+
+{% endblock %}

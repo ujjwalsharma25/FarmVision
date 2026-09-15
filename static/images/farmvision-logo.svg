@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320">
+  <defs>
+    <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34C759"/>
+      <stop offset="55%" stop-color="#1A7F37"/>
+      <stop offset="100%" stop-color="#0F3D1E"/>
+    </linearGradient>
+    <radialGradient id="pupilGrad2" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FBBC05"/>
+      <stop offset="100%" stop-color="#E8A400"/>
+    </radialGradient>
+  </defs>
+
+  <!-- icon, scaled and translated into the left side -->
+  <g transform="translate(20, 10) scale(0.56)">
+    <path d="M 60 256
+             C 130 140, 190 96, 256 96
+             C 322 96, 382 140, 452 256
+             C 382 372, 322 416, 256 416
+             C 190 416, 130 372, 60 256 Z"
+          fill="url(#leafGrad2)"/>
+    <path d="M 104 256
+             C 158 168, 206 132, 256 132
+             C 306 132, 354 168, 408 256
+             C 354 344, 306 380, 256 380
+             C 206 380, 158 344, 104 256 Z"
+          fill="#0F3D1E" opacity="0.14"/>
+    <circle cx="256" cy="256" r="58" fill="url(#pupilGrad2)"/>
+    <circle cx="238" cy="236" r="16" fill="#FFF4D6" opacity="0.85"/>
+    <path d="M 256 96 C 246 180, 246 332, 256 416"
+          stroke="#0F3D1E" stroke-width="6" fill="none" opacity="0.35" stroke-linecap="round"/>
+    <path d="M 256 180 C 220 196, 190 210, 155 220" stroke="#0F3D1E" stroke-width="4" fill="none" opacity="0.25" stroke-linecap="round"/>
+    <path d="M 256 180 C 292 196, 322 210, 357 220" stroke="#0F3D1E" stroke-width="4" fill="none" opacity="0.25" stroke-linecap="round"/>
+    <path d="M 256 332 C 220 316, 190 302, 155 292" stroke="#0F3D1E" stroke-width="4" fill="none" opacity="0.25" stroke-linecap="round"/>
+    <path d="M 256 332 C 292 316, 322 302, 357 292" stroke="#0F3D1E" stroke-width="4" fill="none" opacity="0.25" stroke-linecap="round"/>
+    <path d="M 256 96 C 252 68, 262 46, 284 32" stroke="#1A7F37" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <ellipse cx="292" cy="28" rx="16" ry="10" fill="#34C759" transform="rotate(-25 292 28)"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="320" y="195" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="108" fill="#0F3D1E">Farm<tspan fill="#1A7F37">Vision</tspan></text>
+  <text x="322" y="235" font-family="'Segoe UI', Arial, sans-serif" font-weight="500" font-size="30" letter-spacing="2" fill="#6b7280">AI FOR EVERY FARMER</text>
+</svg>

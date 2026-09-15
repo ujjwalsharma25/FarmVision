@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🧪 Get Fertilizer Advice</h2>
+    <p class="ak-page-subtitle">Enter your soil's N-P-K values and the crop you want to grow.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-card ak-card-narrow">
+    <form method="POST" action="{{ url_for('fert_recommend') }}">
+      <div class="form-group">
+        <label><b>Nitrogen (N)</b></label>
+        <input type="number" class="form-control" name="nitrogen" placeholder="e.g. 50" required />
+      </div>
+      <div class="form-group">
+        <label><b>Phosphorous (P)</b></label>
+        <input type="number" class="form-control" name="phosphorous" placeholder="e.g. 50" required />
+      </div>
+      <div class="form-group">
+        <label><b>Potassium (K)</b></label>
+        <input type="number" class="form-control" name="pottasium" placeholder="e.g. 50" required />
+      </div>
+      <div class="form-group">
+        <label><b>Crop you want to grow</b></label>
+        <select name="cropname" class="form-control" required>
+          <option selected disabled value="">Select crop</option>
+          <option>rice</option><option>maize</option><option>chickpea</option>
+          <option>kidneybeans</option><option>pigeonpeas</option><option>mothbeans</option>
+          <option>mungbean</option><option>blackgram</option><option>lentil</option>
+          <option>pomegranate</option><option>banana</option><option>mango</option>
+          <option>grapes</option><option>watermelon</option><option>muskmelon</option>
+          <option>apple</option><option>orange</option><option>papaya</option>
+          <option>coconut</option><option>cotton</option><option>jute</option>
+          <option>coffee</option>
+        </select>
+      </div>
+      <button type="submit" class="ak-btn ak-btn-primary ak-btn-block" style="margin-top:0.5rem;">Get Recommendation</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

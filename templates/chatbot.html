@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🤖 Ask FarmVision — Farmer Assistant</h2>
+    <p class="ak-page-subtitle">Powered by Groq (Llama 3.3, free & fast). Ask about crop diseases, fertilizers, weather or farming practices — in whichever language you're comfortable with.</p>
+    <div class="ak-lang-badges" style="justify-content:center;">
+      <span class="ak-lang-badge">हिंदी</span>
+      <span class="ak-lang-badge">English</span>
+      <span class="ak-lang-badge">मराठी</span>
+      <span class="ak-lang-badge">தமிழ்</span>
+      <span class="ak-lang-badge">తెలుగు</span>
+      <span class="ak-lang-badge">ਪੰਜਾਬੀ</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-card" style="max-width: 720px;">
+    {% if not chatbot_ready %}
+    <div class="ak-alert ak-alert-error">
+      Chatbot isn't set up yet. Add a free <code>GROQ_API_KEY</code> to your <code>.env</code> file
+      (get one at <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a>) and restart the app.
+    </div>
+    {% endif %}
+
+    <div id="chat-window" class="ak-chat-window">
+      <div class="ak-chat-bubble bot">Namaste! 🙏 Mujhse crop disease, fertilizer, ya weather ke baare mein kuch bhi pooch sakte ho — apni bhasha mein.</div>
+    </div>
+
+    <form id="chat-form" class="ak-chat-input-row">
+      <input type="text" id="chat-input" placeholder="Type your question... (e.g. Tamatar ke patto pe daag hai, kya karu?)" autocomplete="off" required>
+      <button class="ak-btn ak-btn-primary" type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const chatWindow = document.getElementById('chat-window');
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+
+  function addBubble(text, sender) {
+    const bubble = document.createElement('div');
+    bubble.className = 'ak-chat-bubble ' + sender;
+    bubble.textContent = text;
+    chatWindow.appendChild(bubble);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    return bubble;
+  }
+
+  chatForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    addBubble(message, 'user');
+    chatInput.value = '';
+    const thinkingBubble = addBubble('Typing...', 'bot');
+
+    try {
+      const res = await fetch('/chatbot/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+      });
+      const data = await res.json();
+      thinkingBubble.textContent = data.reply || 'Sorry, no response.';
+    } catch (err) {
+      thinkingBubble.textContent = 'Network error — please try again.';
+    }
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  });
+</script>
+
+{% endblock %}

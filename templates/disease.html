@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🌿 Find out which disease has affected your plant</h2>
+    <p class="ak-page-subtitle">Upload a clear photo of the affected leaf — we'll detect the disease and suggest treatment based on your real location's weather.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-card ak-card-narrow">
+    {% if error %}
+    <div class="ak-alert ak-alert-error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" id="disease-form">
+      <label class="ak-upload-box" id="upload-box" for="inputfile">
+        <img id="output-image" class="ak-preview-img" style="display:none;" />
+        <div id="upload-placeholder">
+          <div class="ak-upload-icon">📷</div>
+          <p><strong>Click to upload</strong> or drag a leaf photo here</p>
+          <span class="ak-upload-hint">PNG, JPG or JPEG</span>
+        </div>
+      </label>
+      <input type="file" required name="file" id="inputfile" accept="image/png, image/jpeg" onchange="preview_image(event)" style="display:none;">
+
+      <!-- Real GPS location, captured silently via the browser's free Geolocation API -->
+      <input type="hidden" name="latitude" id="latitude-field">
+      <input type="hidden" name="longitude" id="longitude-field">
+      <div class="ak-location-status" id="location-status">📍 Detecting your location for weather-based advice...</div>
+
+      <button class="ak-btn ak-btn-primary ak-btn-block" type="submit">Analyze Leaf</button>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var output = document.getElementById('output-image');
+      output.src = reader.result;
+      output.style.display = 'block';
+      document.getElementById('upload-placeholder').style.display = 'none';
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  // Ask the browser for the farmer's real location (free, built into every browser).
+  // If they deny it or it's unavailable, the backend safely falls back to a default.
+  const locStatus = document.getElementById('location-status');
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        document.getElementById('latitude-field').value = position.coords.latitude;
+        document.getElementById('longitude-field').value = position.coords.longitude;
+        locStatus.textContent = '📍 Location detected — advice will match your local weather.';
+        locStatus.classList.add('ak-location-ok');
+      },
+      function () {
+        locStatus.textContent = '📍 Location not shared — using default weather data.';
+      },
+      { timeout: 8000 }
+    );
+  } else {
+    locStatus.textContent = '';
+  }
+</script>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">🤝 Knowledge Sharing</h2>
+    <p class="ak-page-subtitle">Farmers share their experience, tips and best practices — a real community, built into FarmVision.</p>
+  </div>
+</div>
+
+<div class="container" style="max-width:640px;">
+  <div class="ak-card">
+    <h4 style="color:var(--ak-green-dark); font-weight:600; margin-bottom:1rem;">Share a tip</h4>
+    <form method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" name="author_name" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="crop" placeholder="Crop (optional, e.g. Tomato)">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="tip" rows="3" placeholder="Share what worked for you..." required></textarea>
+      </div>
+      <button type="submit" class="ak-btn ak-btn-primary">Post Tip</button>
+    </form>
+  </div>
+
+  {% for t in tips %}
+  <div class="ak-card" style="padding:1.25rem 1.5rem; margin-top:1rem;">
+    <p style="margin:0 0 0.5rem;">{{ t.tip }}</p>
+    <div style="color:var(--ak-muted); font-size:0.85rem;">
+      — {{ t.author_name }}{% if t.crop %} · {{ t.crop }}{% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="ak-card" style="text-align:center; color:var(--ak-muted); margin-top:1rem;">No tips yet — be the first to share!</div>
+  {% endfor %}
+</div>
+
+{% endblock %}

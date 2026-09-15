@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-hero-mini">
+  <div class="container">
+    <h2 class="ak-page-title">📅 Yearly Crop Planning</h2>
+    <p class="ak-page-subtitle">India's three cropping seasons, and what typically grows in each.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ak-service-grid">
+    {% for s in seasons %}
+    <div class="ak-card" style="margin:0;">
+      <div style="font-size:2rem;">{{ s.icon }}</div>
+      <h4 style="color:var(--ak-green-dark); font-weight:700; margin:0.4rem 0;">{{ s.name }}</h4>
+      <p style="color:var(--ak-muted); font-size:0.9rem;">{{ s.note }}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.75rem;">
+        {% for c in s.crops %}
+        <span class="ak-lang-badge">{{ c }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

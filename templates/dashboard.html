@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="ak-dash-wrap">
+  <aside class="ak-sidebar">
+    <div class="ak-sidebar-brand">
+      <img src="{{ url_for('static', filename='images/farmvision-icon-128.png') }}" alt="FarmVision">
+      <span>FarmVision</span>
+    </div>
+    <a href="{{ url_for('dashboard') }}" class="ak-sidebar-link active"><span class="icon">🏠</span> Dashboard</a>
+    <a href="{{ url_for('disease_prediction') }}" class="ak-sidebar-link"><span class="icon">🍃</span> Detect Disease</a>
+    <a href="{{ url_for('crop_recommend') }}" class="ak-sidebar-link"><span class="icon">🌱</span> Crop Recommendation</a>
+    <a href="{{ url_for('fertilizer_recommendation') }}" class="ak-sidebar-link"><span class="icon">🧪</span> Fertilizer</a>
+    <a href="{{ url_for('farmers_search') }}" class="ak-sidebar-link"><span class="icon">👨‍🌾</span> Farmers</a>
+    <a href="{{ url_for('weather_page') }}" class="ak-sidebar-link"><span class="icon">🌦️</span> Weather</a>
+    <a href="{{ url_for('yearly_plan') }}" class="ak-sidebar-link"><span class="icon">📅</span> Yearly Plan</a>
+    <a href="{{ url_for('community') }}" class="ak-sidebar-link"><span class="icon">🤝</span> Community</a>
+    <a href="{{ url_for('chatbot_page') }}" class="ak-sidebar-link"><span class="icon">🤖</span> Ask AI</a>
+    <a href="{{ url_for('logout') }}" class="ak-sidebar-link"><span class="icon">🚪</span> Logout</a>
+  </aside>
+
+  <main class="ak-dash-main">
+    <div class="ak-dash-topbar">
+      <h2>👋 Welcome back{% if user %}, {{ user.name or user.email }}{% endif %}</h2>
+    </div>
+
+    <div class="ak-service-grid">
+      <a href="{{ url_for('disease_prediction') }}" class="ak-service-card">
+        <div class="ak-service-icon">🍃</div>
+        <h4>Detect Disease</h4>
+        <p>Upload a leaf photo and get an instant diagnosis + treatment plan.</p>
+      </a>
+      <a href="{{ url_for('crop_recommend') }}" class="ak-service-card">
+        <div class="ak-service-icon">🌱</div>
+        <h4>Crop Recommendation</h4>
+        <p>Find the best crop for your soil from an image.</p>
+      </a>
+      <a href="{{ url_for('fertilizer_recommendation') }}" class="ak-service-card">
+        <div class="ak-service-icon">🧪</div>
+        <h4>Fertilizer Advice</h4>
+        <p>Get N-P-K based fertilizer guidance for your crop.</p>
+      </a>
+      <a href="{{ url_for('chatbot_page') }}" class="ak-service-card">
+        <div class="ak-service-icon">🤖</div>
+        <h4>Ask AI</h4>
+        <p>Chat with our multilingual farming assistant, anytime.</p>
+      </a>
+      <a href="{{ url_for('farmers_search') }}" class="ak-service-card">
+        <div class="ak-service-icon">👨‍🌾</div>
+        <h4>Farmers Directory</h4>
+        <p>Search registered farmers on FarmVision.</p>
+      </a>
+      <a href="{{ url_for('weather_page') }}" class="ak-service-card">
+        <div class="ak-service-icon">🌦️</div>
+        <h4>Weather</h4>
+        <p>Real weather by city or your live location.</p>
+      </a>
+      <a href="{{ url_for('yearly_plan') }}" class="ak-service-card">
+        <div class="ak-service-icon">📅</div>
+        <h4>Yearly Plan</h4>
+        <p>Kharif, Rabi and Zaid season crop calendar.</p>
+      </a>
+      <a href="{{ url_for('community') }}" class="ak-service-card">
+        <div class="ak-service-icon">🤝</div>
+        <h4>Knowledge Sharing</h4>
+        <p>Farmers share tips, experience and best practices.</p>
+      </a>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
