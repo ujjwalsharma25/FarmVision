@@ -112,7 +112,7 @@ FarmVision-main/
 
 ## 🙏 Credits
 
-Originally built as a prototype for Smart India Hackathon 2024 by Team Anant, and since then
+Originally built as a prototype for Smart India Hackathon 2024 by Team Vision Coders, and since then
 maintained and upgraded independently. Research references and original architecture notes are kept
 in `README-original-SIH.md` for history.
 
