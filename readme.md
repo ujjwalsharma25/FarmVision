@@ -227,15 +227,12 @@ FarmVision/
 - [ ] Migrate to PostgreSQL for production scale
 
 
-## 👥 Team — Vision Coders
+## 👥 By
 
-| Name | Role |
-|---|---|
-| Ujjwal Sharma | Team Lead |
-| Nishant | Member |
-| Aastha | Member |
-| Aanya | Member |
-| Nishita | Member |
+| Ujjwal Sharma |
+
+
+
 
 
 
